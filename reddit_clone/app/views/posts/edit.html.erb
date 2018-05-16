@@ -1,0 +1,29 @@
+<!-- edit post -->
+<h2>Edit a Post</h1>
+
+<form action="<%=post_url(@post)%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="title">Title</label>
+  <input id="title" type="text" name="post[title]" value="<%=@post.title%>">
+  <br>
+
+  <label for="title">URL</label>
+  <input id="title" type="text" name="post[url]" value="<%=@post.url%>">
+  <br>
+
+  <h6>Select all subreddits you would like to post this to: </h6>
+  <ul>
+    <% @post.subs.each do |sub| %>
+      <label for="checkbox"><%=sub.title%></label>
+      <input id="checkbox" type="checkbox" name="post[sub_ids][]" value="<%=sub.id%>" <%= @post.sub_ids.include?(sub.id) ?  "checked" : ""%>>
+    <% end %>
+  </ul>
+
+  <h6>Content</h6>
+  <textarea name="post[content]" rows="8" cols="80"><%=@post.content%></textarea>
+
+
+  <br>
+  <input type="submit" name="" value="Edit Post">
+</form>

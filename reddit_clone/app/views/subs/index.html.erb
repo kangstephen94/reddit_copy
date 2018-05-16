@@ -1,0 +1,12 @@
+<!-- index sub -->
+<h1>All SubReddits</h1>
+
+<a href="<%=new_sub_url%>">Create a Subreddit Thread</a>
+
+<ul>
+<% @subs.each do |sub| %>
+<li>
+<a href="<%=sub_url(sub)%>"><%=sub.title%></a>
+</li>
+<% end %>
+</ul>

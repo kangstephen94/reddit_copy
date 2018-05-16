@@ -1,0 +1,14 @@
+<!-- show post -->
+<h2> <%= @post.title  %></h2>
+
+<h4>  Content: <%= @post.content  %> </h4>
+<br>
+<a href="<%=edit_post_url(@post)%>">Edit this post</a>
+<br>
+<a href="<%=subs_url%>">Back to the Subs</a>
+
+<form class="" action="<%=post_url(@post)%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="submit" name="" value="Remove Post">
+</form>
